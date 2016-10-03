@@ -39,7 +39,6 @@ def TestUpload():
                 if 'unavailable.' in str(process):
                     continue
                 if 'Too Large'  in str(process):
-                    print(str(process))
                     print('bad serv, skipping...\n')
                 else:
 
@@ -52,8 +51,6 @@ def TestUpload():
                         print('upload speed is '+speed+ '    uploaded   to  '+full_url)
                         speeds.append(str(round(int(process.strip().split(' ')[1].split('.')[0]) / 1048576, 2))+"MB/s")
                     elif 'size=' in str(process):
-                        print(process)
-                        print(com)
                         #print(process.strip().split(' ')[1].split('.')[0][6:])
                         speed = str('\033[92m'+str(round(int(process.strip().split('size=')[-1].split('.')[0][6:]) / 1048576, 2)))+"MB/s"+'\033[0;37;40m'
                         print('lola upload speed is '+speed+ '    uploaded   to  '+full_url)
