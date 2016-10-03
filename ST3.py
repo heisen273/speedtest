@@ -36,21 +36,29 @@ def TestUpload():
 
                 com = str('echo "scale=2; `curl -m 30 --progress-bar -w "%{speed_upload}" --data-binary @'+filename+' '+full_url+'`"')
                 process = os.popen(com).read()
-                if 'Too Large' in str(process):
+                if 'unavailable.' in str(process):
+                    continue
+                if 'Too Large'  in str(process):
+                    print(str(process))
                     print('bad serv, skipping...\n')
-
                 else:
 
                     if 'size=500' in str(process):
-                        speed = str('\033[92m'+str(round(int(process.strip().split(' size=500')[1].split('.')[0]) / 1048576, 2)))+"MB/s"+'\033[0;37;40m'
+                        speed = str('\033[92m'+str(round(int(process.strip().split('size=500')[-1].split('.')[0]) / 1048576, 2)))+"MB/s"+'\033[0;37;40m'
                         print('upload speed is '+speed+ '    uploaded   to  '+full_url)
-                        speeds.append(str(round(int(process.strip().split(' size=500')[1].split('.')[0]) / 1048576, 2))+"MB/s")
+                        speeds.append(str(round(int(process.strip().split('size=500')[-1].split('.')[0]) / 1048576, 2))+"MB/s")
                     elif 'size=' not in str(process):
                         speed = str('\033[92m'+str(round(int(process.strip().split(' ')[1].split('.')[0]) / 1048576, 2)))+"MB/s"+'\033[0;37;40m'
                         print('upload speed is '+speed+ '    uploaded   to  '+full_url)
                         speeds.append(str(round(int(process.strip().split(' ')[1].split('.')[0]) / 1048576, 2))+"MB/s")
                     elif 'size=' in str(process):
-                        print('bad serv, skipping. . .')
+                        print(process)
+                        print(com)
+                        #print(process.strip().split(' ')[1].split('.')[0][6:])
+                        speed = str('\033[92m'+str(round(int(process.strip().split('size=')[-1].split('.')[0][6:]) / 1048576, 2)))+"MB/s"+'\033[0;37;40m'
+                        print('lola upload speed is '+speed+ '    uploaded   to  '+full_url)
+
+                        #print('bad serv, skipping. . .')
         try:
             speeds.remove('0.0MB/s')
         except Exception as e:
