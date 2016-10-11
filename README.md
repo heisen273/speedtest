@@ -2,10 +2,10 @@
 Python3 amazing speedtest. Unique of a kind, you'll never see any similar thing anywhere. 
 
 Require following libs:
-vincenty
+```vincenty
 lxml
 urllib
-
+```
 First you need to download the script and navigate to speedtest directory:
 ```python 
 git clone https://github.com/heisen273/speedtest.git
