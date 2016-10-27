@@ -3,8 +3,13 @@ import sys
 from io import BytesIO
 import urllib.request
 from urllib.request import urlopen
-from lxml import etree
-from vincenty import vincenty
+try:
+    from lxml import etree
+    from vincenty import vincenty
+except Exception as e:
+    print(e)
+    print('\nDependencies required! Please "pip install" missing modules!')
+    sys.exit()
 import argparse
 import gzip
 args=argparse.Namespace()
