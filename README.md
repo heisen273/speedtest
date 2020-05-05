@@ -26,4 +26,4 @@ And enjoy true internet speed test.
 
 
 
-###### Copyright Anton Antonenko antonenkosergeevich@gmail.com
+###### Copyright Anton Antonenko
