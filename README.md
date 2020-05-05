@@ -20,10 +20,3 @@ python3 ST3.py
 ```
 
 And enjoy true internet speed test.
-
-
-
-
-
-
-###### Copyright Anton Antonenko
