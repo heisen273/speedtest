@@ -56,9 +56,11 @@ def TestUpload():
                         print('upload speed is '+speed+ '    uploaded   to  '+full_url)
                         speeds.append(str(round(int(process.strip().split(' ')[1].split('.')[0]) / 1048576, 2))+"MB/s")
                     elif 'size=' in str(process):
-                        #print(process.strip().split(' ')[1].split('.')[0][6:])
-                        speed = str('\033[92m'+str(round(int(process.strip().split('size=')[-1].split('.')[0][6:]) / 1048576, 2)))+"MB/s"+'\033[0;37;40m'
-                        print('upload speed is '+speed+ '    uploaded   to  '+full_url)
+                        try:
+                            speed = str('\033[92m'+str(round(int(process.strip().split('size=')[-1].split('.')[0][6:]) / 1048576, 2))) + "MB/s" + '\033[0;37;40m'
+                        except:
+                            speed = str('\033[92m'+str(round(int(process.strip().split('\n')[-1].split('.')[0]) / 1048576, 2))) + "MB/s" + '\033[0;37;40m'
+                        print('upload speed is '+speed+ '    uploaded   to  ' + full_url)
 
                         #print('bad serv, skipping. . .')
         try:
