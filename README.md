@@ -1,3 +1,5 @@
+![preview](https://i.imgur.com/IF3yAmu.gif)
+
 # python3 real internet speed test. speedtest-cli alternative (no fake speeds!)
 Python3 amazing speedtest. Unique of a kind, you'll never see any similar thing anywhere. 
 
